@@ -1,5 +1,6 @@
 package com.dbsg.webfe;
 
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
@@ -13,17 +14,20 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 @Controller
 public class TestController {
 
+	
 	@GetMapping("recipes/registermenu")
 	public String registermenu(Model model) {
 
 		return "recipes/registermenu";
 	}
+	
+	
 
 	@PostMapping("recipes/registerrecipe")
 	// public String registerrecipe(Model model, @RequestBody HashMap<String,Object>
 	// map) {
 	public String registerrecipe(Model model, MultipartHttpServletRequest request) {
-
+		
 		Map<String, Object> map = new HashMap<>();
 
 //	    request안에 모든 데이터 확인하기.
@@ -32,8 +36,21 @@ public class TestController {
 		System.out.println("----------------------------");
 		while (params.hasMoreElements()) {
 			String name = (String) params.nextElement();
-			System.out.println(name + " : " + request.getParameter(name));
 			
+			
+			if(name.equals("tag")) {
+				
+				String [] tagss = request.getParameterValues(name);
+				String menu_tag = "" ;
+				
+				for(String tmp : tagss) {
+					menu_tag += tmp +",";
+				}
+				
+				menu_tag = menu_tag.substring(0, menu_tag.length()-1);
+				map.put("menu_tag",menu_tag);
+			}
+			System.out.println(name + " : " + request.getParameter(name));
 			map.put(name, request.getParameter(name));
 		}
 		System.out.println("----------------------------");
@@ -41,7 +58,7 @@ public class TestController {
 
 		model.addAttribute("menu", map);
 
-		 System.out.println(model.getAttribute("menu"));
+		System.out.println(model.getAttribute("menu"));
 
 		return "recipes/registerrecipe";
 	}

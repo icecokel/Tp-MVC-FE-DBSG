@@ -52,7 +52,7 @@ function getList() {
 		success : function(data) {
 			var list = data.menulist;
 			let len = list.length; // 메뉴 배열의 크기
-
+			console.log(data)
 			for (let i = 0; i < len; i++) {
 				//
 				createItem(list[i], "listTable")
@@ -89,7 +89,7 @@ function createItem(obj, parent) {
 	tr.appendChild(tdDesc);
 
 	let tdDMaterial = document.createElement("td")
-	tdDMaterial.innerText = obj.menu_needlessMaterial
+	tdDMaterial.innerText = obj.menu_reqMaterial
 	tr.appendChild(tdDMaterial);
 
 	let tdStar = document.createElement("td")

@@ -20,7 +20,7 @@
 		<button onclick="searchMenu()">검색</button>
 		
 		<div align="center" id="searchedList" >
-				<table id="searchedTable" border="1" style="visibility:hidden;">
+				<table id="searchedTable"  style="visibility:hidden;">
 					<tr>
 						<td>메뉴번호</td>
 						<td>이미지</td>
@@ -38,7 +38,7 @@
 		<hr />
 		
 		<div align="center" id="listDiv">
-				<table id="listTable" border="1">
+				<table id="listTable">
 					<tr>
 						<td>메뉴번호</td>
 						<td>이미지</td>
