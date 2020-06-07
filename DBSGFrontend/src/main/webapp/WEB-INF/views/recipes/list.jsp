@@ -3,14 +3,23 @@
 <!DOCTYPE html>
 <%@ include file="../include/header.jsp"%>
 
+<style>
+.main {
+	background-color: rgba(255, 255, 255, 0.65);
+}
+</style>
+
+
 <section>
 
-	<div align='center'>
+	<div align='center'class="main">
+	
 		<h1>DB 출력 페이지</h1>
 		
 		<input type="text" id="searchText" placeholder="검색어를 입력해주세요"/>
 		<button onclick="searchMenu()">검색</button>
-		<div align="center" id="searchedList">
+		
+		<div align="center" id="searchedList" >
 				<table id="searchedTable" border="1" style="visibility:hidden;">
 					<tr>
 						<td>메뉴번호</td>
